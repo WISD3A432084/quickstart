@@ -28,7 +28,12 @@ use Illuminate\Http\Request;
     }
 
     // 建立該任務...
-        ///新增任務存入DB的程式碼
+        
+        $task = new Task;
+        $task->name = $request->name;
+        $task->save();
+        return redirect('/');
+
     });
 
     /**
