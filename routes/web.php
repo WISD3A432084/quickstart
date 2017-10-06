@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
      * 顯示所有任務
      */
     Route::get('/', function () {
-        return view('tasks');
+        $tasks = Task::orderBy('created_at', 'asc')->get();
+
+        return view('tasks', [
+            'tasks' => $tasks
+        ]);
     });
 
     /**
@@ -28,7 +32,7 @@ use Illuminate\Http\Request;
     }
 
     // 建立該任務...
-        
+
         $task = new Task;
         $task->name = $request->name;
         $task->save();
